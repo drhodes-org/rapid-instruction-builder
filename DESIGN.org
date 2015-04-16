@@ -1,0 +1,10 @@
+
+
+* Rapid Instruction Builder
+** display backend
+*** raphael
+**** The model
+- persistant
+- handles updates, so main app doesn't need to deal with screen refreshes at all.
+- main app declares on screen objects
+- 

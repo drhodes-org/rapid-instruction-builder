@@ -26,7 +26,7 @@ class Rectangle {
     private height: number;
 }
 
-class Circle {
+class CircleWidget{
     center: Point2    
 }
 
@@ -35,4 +35,7 @@ interface Draw {
 
 function main() {
     var dsp = new D.Display();
+    // var circle = this.paper.circle(10, 10, 10)
+    // circle.attr("fill", "#f00")
+    // circle.attr("stroke", "#fff")    
 }

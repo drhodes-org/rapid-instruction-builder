@@ -1,29 +1,37 @@
 /// <reference path="../raphael/raphael.d.ts"/>
 /// <reference path="../common/StateMachine.ts"/>
 /// <reference path="../common/Assert.ts"/>
+/// <reference path="../common/Draw.ts"/>
 import SM = StateMachine;
 
 module Display {
-    export class Display {
+    export class Display extends SM.StateMachine {
         private paper: any // Raphael canvas
-        private sm: SM.StateMachine
         
         constructor() {
+            super("Display")            
             this.paper = Raphael("canvas", 400, 400)
-            var circle = this.paper.circle(10, 10, 10)
-            circle.attr("fill", "#f00")
-            circle.attr("stroke", "#fff")
 
-            this.sm = new SM.StateMachine()
-            this.sm.AddStart("idle")
-            this.sm.AddTransition("go", "idle", "running")   
-            this.sm.AddTransition("stop", "running", "idle")
-            this.sm.Trigger("go")
+            this.AddStart("idle")
+            this.AddTransition("start-drawing", "idle", "drawing")   
+            this.AddTransition("stop-drawing", "drawing", "idle")
         }
         
         draw() {
-            assertState(this, "running")
+            assertState(this, "idle")
+            this.Trigger("start-drawing")
+            //
+            
+
+            
+            
+            //
+            this.Trigger("stop-drawing")
+            assertState(this, "idle")
         }
+
+        
+        
         
         toString(): string {
             return "<DisplaySystem>"

@@ -1,5 +1,4 @@
 module StateMachine {
-    
     // ------------------------------------------------------------------
     class Transition {
         public trigger: string;
@@ -23,16 +22,18 @@ module StateMachine {
     
     // ------------------------------------------------------------------
     export class StateMachine {
+        private name: string
         private curState: string;
         private transitions: Transition[];
         private errorState: boolean;
         private errorMsg: string;
         
-        constructor() {
+        constructor(name: string) {
+            this.name = name
             this.curState = "cur-state-not-initialized"
-            this.transitions = [];
-            this.errorState = false;
-            this.errorMsg = "no-error";
+            this.transitions = []
+            this.errorState = false
+            this.errorMsg = "no-error"
         }
 
         public AddStart(s: string) {
