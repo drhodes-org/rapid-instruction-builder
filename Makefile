@@ -16,3 +16,8 @@ genesis: clean
 
 commit:
 	git commit -a
+
+push: FORCE
+	sh push.sh
+
+FORCE:
