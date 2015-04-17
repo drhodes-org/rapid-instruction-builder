@@ -17,6 +17,9 @@ genesis: clean
 commit:
 	git commit -a
 
+work:
+	emacs -nw $(shell find | grep \\.ts$) Makefile DESIGN.org
+
 push: FORCE
 	sh push.sh
 

@@ -1,10 +1,14 @@
-
-
 * Rapid Instruction Builder
+** constraint system
+- computation restricted to power of regular expressions
+*** relationships may exist between:
+- 1-to-1 items.
+- consider n-to-m, watchout for quadratic 
+
 ** display backend
 *** raphael
 **** The model
 - persistant
 - handles updates, so main app doesn't need to deal with screen refreshes at all.
-- main app declares on screen objects
+- main app requests primitives objects
 - 
