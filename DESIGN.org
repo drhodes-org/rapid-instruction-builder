@@ -1,14 +1,49 @@
-* Rapid Instruction Builder
-** constraint system
-- computation restricted to power of regular expressions
-*** relationships may exist between:
-- 1-to-1 items.
-- consider n-to-m, watchout for quadratic 
 
-** display backend
-*** raphael
-**** The model
-- persistant
-- handles updates, so main app doesn't need to deal with screen refreshes at all.
-- main app requests primitives objects
-- 
+* Rapid Instruction Builder
+** architecture
+*** Layers
+**** Logic
+***** Shapes
+      - Uses common/BoundingBox
+      - Circle
+      - Box
+      - LineSegment
+      - Path
+      - Color
+        - Filled
+        - Stroke
+
+***** Constraint system
+      - computation restricted to power of regular expressions
+      - 
+****** Relationships:
+       - 1-to-1 items.
+       - consider n-to-m, watchout for quadratic 
+
+**** Display
+***** ElementMgr
+      - Manages raphael objects for Display.
+      
+***** Raphael
+****** The model
+       - persistant
+       - handles updates, so main app doesn't need to deal with screen
+         refreshes at all.
+       - main app requests primitives objects
+
+**** Common
+     - Common elements to other layers. May be geometric
+***** Color
+***** BoundingBox
+      - BoundingBoxI
+      - BoundingBox is constrainable.        
+        - example.  
+          - Constrain the top of a bounding box to a line segment.
+          - Constrain the center of the bounding box to the mouse pos.
+          - Constrain the center of the bounding box OF the circle
+            called "my-circle" to the line segment called
+            "my-line-segment"
+
+***** StateMachine       
+
+

@@ -1,5 +1,6 @@
-build:
-	tsc --out rib.js main.ts
+build: FORCE
+	tsc --out ./build/rib.js ./src/main.ts
+
 test:
 	echo ok
 
