@@ -1,9 +1,9 @@
 /// <reference path="../../raphael/raphael.d.ts"/>
-/// <reference path="../common/StateMachine.ts"/>
-/// <reference path="../common/Assert.ts"/>
 /// <reference path="Circle.ts"/>
-
+/// <reference path="../common/Assert.ts"/>
+/// <reference path="../common/StateMachine.ts"/>
 module Display {
+    
     import SM = StateMachine;
 
     export class Display extends SM.StateMachine {
@@ -12,7 +12,7 @@ module Display {
         constructor() {
             super("Display")            
             this.paper = Raphael("canvas", 400, 400)
-
+            
             this.AddStart("idle")
             this.AddTransition("start-drawing", "idle", "drawing")   
             this.AddTransition("stop-drawing", "drawing", "idle")
@@ -22,7 +22,7 @@ module Display {
         public Circle(): Circle.Circle {
             // eventually this will have a reference in an
             // entity store.
-            return new Circle.Circle()
+            return new Circle.Circle(this.paper);
         }
         
         toString(): string {

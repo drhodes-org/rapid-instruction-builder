@@ -1,38 +1,62 @@
-
 * Rapid Instruction Builder
+  - The project goal at this point is to provide a programmatic method
+    for creating systems.  A full GUI at this point is too much, so
+    everything will be specified with code.
+
 ** architecture
 *** Layers
-**** Logic
-***** Shapes
-      - Uses common/BoundingBox
-      - Circle
-      - Box
-      - LineSegment
-      - Path
-      - Color
-        - Filled
-        - Stroke
+**** Cmd
+     - Cmd manages Logic and Display. Since Logic and Display are
+       isolated from each, Cmd is needed to figure out how to feed
+       Logic objects into Display.
+     - Cmd is where events are introduced.
 
-***** Constraint system
-      - computation restricted to power of regular expressions
-      - 
-****** Relationships:
-       - 1-to-1 items.
-       - consider n-to-m, watchout for quadratic 
+***** Logic
+****** Shapes
+       - Uses common/BoundingBox
+       - Circle
+       - Box
+       - LineSegment
+       - Path
+       - Color
+         - Filled
+         - Stroke
 
-**** Display
-***** ElementMgr
-      - Manages raphael objects for Display.
-      
-***** Raphael
-****** The model
-       - persistant
+****** Constraint system
+       - computation restricted to power of regular expressions.  What
+         does this mean in the context of constraints?  Constraints are
+         the glue that hold these models together. The transitions
+         between the model's state machine is governed by constraints.
+******* Efficient contrains predicates
+        - Constraints will be encoded as methods (self -> a -> Bool)
+          - testable conditions with boolean return vals
+          - these need to be efficient because there's going to be many
+            of them
+            
+******* Relationships:
+        - 1-to-1 items.
+        - consider n-to-m, watchout for quadratic 
+******* example: Constrain a circle boundary to a circle boundary
+        - there are two circles, C1, C2
+        - there are three constraints
+          - A) The borders of each circle share one point
+          - B) C1 is immobile.
+          - C) C2.center is minimizing distance to mouse.pos
+            
+***** Display
+****** ElementMgr
+       - Manages raphael objects for Display.
+       
+****** Raphael
+       - persistant display.
        - handles updates, so main app doesn't need to deal with screen
          refreshes at all.
-       - main app requests primitives objects
+       - main app requests primitives objects.
 
 **** Common
      - Common elements to other layers. May be geometric
+     - user facing angles are in degrees, everywhere.
+
 ***** Color
 ***** BoundingBox
       - BoundingBoxI
