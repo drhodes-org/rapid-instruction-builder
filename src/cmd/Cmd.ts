@@ -3,6 +3,7 @@
 /// <reference path="../common/StateMachine.ts"/>
 /// <reference path="../display/Display.ts"/>
 /// <reference path="../logic/Circle.ts"/>
+/// <reference path="../cmd/Evt.ts"/>
 /// <reference path="../common/Entity.ts"/>
 
 module Cmd {
@@ -11,9 +12,13 @@ module Cmd {
     
     export class Cmd {
         display: Display.Display
+        event: Evt.Evt
         
         constructor() {
-            this.display = new Display.Display()
+            this.display = new Display.Display(640, 480)
+            var paper = this.display.CmdGetPaper();
+            this.event = new Evt.Evt(paper)
+            // paper.dblclick(function(){ alert("hello") })
         }
 
         Circle(p: Point2, radius: number): LC.Circle {
@@ -26,8 +31,10 @@ module Cmd {
             return lc;
         }
 
+        
+
+        
         Constrain(e1: E.Entity, e2: E.Entity) {
-            
         }
     }
 }

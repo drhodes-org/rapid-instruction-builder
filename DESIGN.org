@@ -23,25 +23,47 @@
          - Stroke
 
 ****** Constraint system
+       - Sutherland's Sketchpad Demo         
+         1/2 https://www.youtube.com/watch?v=USyoT_Ha_bA
+         2/2 https://www.youtube.com/watch?v=BKM3CmRqK2o
+         Rivet demo https://www.youtube.com/watch?v=57wj8diYpgY
        - computation restricted to power of regular expressions.  What
-         does this mean in the context of constraints?  Constraints are
-         the glue that hold these models together. The transitions
+         does this mean in the context of constraints?  Constraints
+         are the glue that hold these models together. The transitions
          between the model's state machine is governed by constraints.
+******* Constraint Collisions
+        - Sometimes constraints between two objects can't be
+          inferred. Example: Take two circles and force their
+          boundaries to share a point.  Does this mean their insides
+          can intersect? The convention should be to choose the most
+          liberal interpretation of the constraint.  More limitations
+          can be applied later.  Subtracting constraints or developing
+          some sort of boolean set theory Union/Intersection system is
+          interesting but sounds like a lot of work.            
+        - Mitigation: offer some options in a popup text chooser,
+          think about this some more before implementing.
 ******* Efficient contrains predicates
         - Constraints will be encoded as methods (self -> a -> Bool)
           - testable conditions with boolean return vals
-          - these need to be efficient because there's going to be many
-            of them
+          - these need to be efficient because there's going to be
+            many of them
             
 ******* Relationships:
         - 1-to-1 items.
         - consider n-to-m, watchout for quadratic 
 ******* example: Constrain a circle boundary to a circle boundary
-        - there are two circles, C1, C2
-        - there are three constraints
-          - A) The borders of each circle share one point
-          - B) C1 is immobile.
-          - C) C2.center is minimizing distance to mouse.pos
+        - DESCRIPTION: Put A circle on the screen. Anchor it so it
+          doesn't move.  Next, put another circle on the screen.
+          Enforce a constraint that mandates that the second circle's
+          boundary shares a point with the first circle's
+          boundary. Also, make the second circle follow the mouse
+          around while staying in contact with the first circle.
+        - SPEC:
+         - there are two circles, C1, C2
+         - there are three constraints
+           - A) The borders of each circle share one point
+           - B) C1 is anchored..
+           - C) C2.center is minimizing distance to mouse.pos
             
 ***** Display
 ****** ElementMgr

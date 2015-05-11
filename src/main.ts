@@ -25,18 +25,20 @@
 // interface Draw {
 // }
 
-
-
 function main() {
     var cmd = new Cmd.Cmd()
-    var c1 = cmd.Circle(new Point2(100, 100), 50)
+    var c1 = cmd.Circle(new Point2(200, 200), 50)
     c1.Anchor(true)
-    var c2 = cmd.Circle(new Point2(100, 100), 50)
+    
+    var c2 = cmd.Circle(new Point2(300, 200), 50)
 
-    // cmd.Constrain(c2.Boundary(), c1.Boundary())
-    // cmd.Attract(c2.Center(), cmd.Mouse.Pos())
-    var b1 = c2.Boundary()
+    var f = function(): boolean {
+        return true;
+    }
 
+    
+    // cmd.Constrain(c2.Boundary(), c1.Boundary(), SharesOnePoint)
+    // cmd.Constrain(c2.Center(), cmd.Mouse.Pos(), MinimizeDistance)
     
     console.log("exit sucessful")
     

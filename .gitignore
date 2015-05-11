@@ -60,3 +60,4 @@ tests/cases/webhost/*.d.ts
 lib
 raphael
 push.sh
+docs

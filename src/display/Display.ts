@@ -9,9 +9,9 @@ module Display {
     export class Display extends SM.StateMachine {
         private paper: any // Raphael canvas
         
-        constructor() {
+        constructor(w: number, h: number) {
             super("Display")            
-            this.paper = Raphael("canvas", 400, 400)
+            this.paper = Raphael("canvas", w, h)
             
             this.AddStart("idle")
             this.AddTransition("start-drawing", "idle", "drawing")   
@@ -24,6 +24,11 @@ module Display {
             // entity store.
             return new Circle.Circle(this.paper);
         }
+
+        public CmdGetPaper(): any {
+            return this.paper;
+        }
+
         
         toString(): string {
             return "<DisplaySystem>"
